@@ -17,19 +17,25 @@ services:
             - MYSQL_ROOT_PASSWORD=root
             - MYSQL_USER=slave1
             - MYSQL_PASSWORD=slave1
+            - MYSQL_PORT=33061
         volumes:
             - ./docker/slave1:/var/lib/mysql
             - ./slave1.cnf:/etc/mysql/conf.d/my.cnf
         ports:
             - '33061:33061'
+        depends_on:
+            - master
     slave2:
         image: mysql:8.0.18
         environment:
             - MYSQL_ROOT_PASSWORD=root
             - MYSQL_USER=slave2
             - MYSQL_PASSWORD=slave2
+            - MYSQL_PORT=33062
         volumes:
             - ./docker/slave2:/var/lib/mysql
             - ./slave2.cnf:/etc/mysql/conf.d/my.cnf
         ports:
             - '33062:33062'
+        depends_on:
+            - master
