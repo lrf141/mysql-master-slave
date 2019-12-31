@@ -29,19 +29,20 @@ services:
             - '33061:33061'
         depends_on:
             - master
-    slave2:
-        image: mysql:8.0.18
-        environment:
-            - MYSQL_ALLOW_EMPTY_PASSWORD=1
-            - MYSQL_USER=slave2
-            - MYSQL_PASSWORD=slave2
-            - MYSQL_REPLICATION_USER=repl
-            - MYSQL_REPLICATION_PASSWORD=repl
-        volumes:
-            - ./docker/slave2:/var/lib/mysql
-            - ./slave2.cnf:/etc/mysql/conf.d/my.cnf
-            - ./docker/slave1-entrypoint-initdb/slave-launch-script.sh:/docker-entrypoint-initdb.d/slave-launch-script.sh
-        ports:
-            - '33062:33062'
-        depends_on:
-            - master
+#    slave2:
+#        image: mysql:8.0.18
+#        environment:
+#            - MYSQL_ALLOW_EMPTY_PASSWORD=1
+#            - MYSQL_USER=slave2
+#            - MYSQL_PASSWORD=slave2
+#            - MYSQL_REPLICATION_USER=repl
+#            - MYSQL_REPLICATION_PASSWORD=repl
+#        volumes:
+#            - ./docker/slave2:/var/lib/mysql
+#            - ./slave2.cnf:/etc/mysql/conf.d/my.cnf
+#            - ./docker/slave1-entrypoint-initdb/slave-launch-script.sh:/docker-entrypoint-initdb.d/slave-launch-script.sh
+#        ports:
+#            - '33062:33062'
+#        depends_on:
+#            - master
+
