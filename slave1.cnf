@@ -2,4 +2,3 @@
 port=33061
 default_authentication_plugin=mysql_native_password
 server_id=2
-skip-slave-start
