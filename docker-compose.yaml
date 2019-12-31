@@ -3,12 +3,14 @@ services:
     master:
         image: mysql:8.0.18
         environment:
-            - MYSQL_ROOT_PASSWORD=root
+            - MYSQL_ALLOW_EMPTY_PASSWORD=1
             - MYSQL_USER=master
             - MYSQL_PASSWORD=master
+            - MYSQL_DATABASE=sample
         volumes:
             - ./docker/master:/var/lib/mysql
             - ./master.cnf:/etc/mysql/conf.d/my.cnf
+            - ./docker/master-initdb:/docker-entrypoint-initdb.d
         ports:
             - '3306:3306'
     slave1:
