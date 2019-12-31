@@ -22,7 +22,7 @@ services:
         volumes:
             - ./docker/slave1:/var/lib/mysql
             - ./slave1.cnf:/etc/mysql/conf.d/my.cnf
-            - ./slave-launch-script.sh:/docker-entrypoint-initdb.d/slave-launch-script.sh
+            - ./docker/slave1-entrypoint-initdb/slave-launch-script.sh:/docker-entrypoint-initdb.d/slave-launch-script.sh
         ports:
             - '33061:33061'
         depends_on:
@@ -38,7 +38,7 @@ services:
         volumes:
             - ./docker/slave2:/var/lib/mysql
             - ./slave2.cnf:/etc/mysql/conf.d/my.cnf
-            - ./slave-launch-script.sh:/docker-entrypoint-initdb.d/slave-launch-script.sh
+            - ./docker/slave1-entrypoint-initdb/slave-launch-script.sh:/docker-entrypoint-initdb.d/slave-launch-script.sh
         ports:
             - '33062:33062'
         depends_on:
