@@ -21,6 +21,7 @@ services:
             - MYSQL_PASSWORD=slave1
             - MYSQL_REPLICATION_USER=repl
             - MYSQL_REPLICATION_PASSWORD=repl
+            - MYSQL_REPLICATION_HOST=master
         volumes:
             - ./docker/slave1:/var/lib/mysql
             - ./slave1.cnf:/etc/mysql/conf.d/my.cnf

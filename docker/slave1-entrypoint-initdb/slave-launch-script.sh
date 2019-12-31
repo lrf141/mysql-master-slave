@@ -15,11 +15,11 @@ SQL
 binlogfile=`mysql -u root -h master -e "SHOW MASTER STATUS\G" | grep File: | awk '{print $2}'`
 position=`mysql -u root -h master -e "SHOW MASTER STATUS\G" | grep Position: | awk '{print $2}'`
 
-mysqldump -u root -h master --all-databases --master-data > /tmp/master.sql
+mysqldump -u root -h $MYSQL_REPLICATION_HOST --all-databases --master-data > /tmp/master.sql
 mysql -u root < /tmp/master.sql
 mysql -u root -v -e "STOP SLAVE;"
 mysql -u root -v -e "RESET SLAVE;"
-mysql -u root -v -e "CHANGE MASTER TO MASTER_HOST='master', MASTER_USER='root', MASTER_PASSWORD='', MASTER_LOG_FILE='${binlogfile}', MASTER_LOG_POS=${position};"
+mysql -u root -v -e "CHANGE MASTER TO MASTER_HOST='${MYSQL_REPLICATION_HOST}', MASTER_USER='root', MASTER_PASSWORD='', MASTER_LOG_FILE='${binlogfile}', MASTER_LOG_POS=${position};"
 mysql -u root -v -e "START SLAVE;"
 
 mysql -u root -h master -v -e "UNLOCK TABLES;"
