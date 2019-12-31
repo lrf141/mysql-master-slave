@@ -24,4 +24,4 @@ mysql -u root -v -e "RESET SLAVE";
 mysql -u root -v -e "CHANGE MASTER TO MASTER_HOST='master', MASTER_USER='root', MASTER_PASSWORD='', MASTER_LOG_FILE='${binlogfile}', MASTER_LOG_POS=${position};"
 mysql -u root -v -e "START SLAVE;"
 
-mysql -u root -h master -e "UNLOCK TABLES;"
+mysql -u root -h master -v -e "UNLOCK TABLES;"
